@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>User Management</title>
+    <!-- Inclui o arquivo CSS para estilização -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
 <h1>User Management</h1>
 
+<!-- Tabela para exibir a lista de usuários -->
 <table border="1">
     <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
     </tr>
+    <!-- Itera sobre a lista de usuários (${users}) e exibe cada usuário na tabela -->
     <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
@@ -20,13 +24,19 @@
     </tr>
 </table>
 
+<!-- Formulário para adicionar um novo usuário -->
 <form th:action="@{/users}" th:object="${newUser}" method="post">
-    <!-- Campos do formulário -->
-    <input type="text" th:field="*{name}" />
-    <input type="text" th:field="*{email}" />
-    <!-- Outros campos -->
 
+    <!-- Campos do formulário para nome e e-mail do novo usuário -->
+    <label for="1">Nome</label>
+    <input type="text" id="1" th:field="*{name}" />
+    <label for="2">E-mail</label>
+    <input type="email" id="2" th:field="*{email}" />
+
+    <!-- Botão para adicionar o novo usuário -->
     <button type="submit">Add User</button>
+
+    <!-- Link para acessar a página de busca -->
     <a th:href="@{/search}" class="btn btn-primary">Buscar</a>
 </form>
 </body>

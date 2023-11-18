@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+<h2>Search Results</h2>
+<ul>
+    <li th:each="user : ${searchResults}">
+        <a th:href="@{'/users/' + ${user.id}}" th:text="${user.name}"></a>
+    </li>
+</ul>
+</body>
+</html>

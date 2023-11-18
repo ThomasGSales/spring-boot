@@ -38,8 +38,18 @@ public class UserController {
 
     @PostMapping
     public String insert(@ModelAttribute User newUser) {
-        repository.save(newUser);
-        return "redirect:/users";
+        try {
+            repository.save(newUser);
+            return "redirect:/users";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
+
+    @GetMapping("/search")
+    public String showSearchPage() {
+        return "search";
     }
 }
 

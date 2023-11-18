@@ -48,8 +48,16 @@ public class UserController {
     }
 
     @GetMapping("/search")
-    public String showSearchPage() {
-        return "search";
+    public String showSearchPage(Model model) {
+        try {
+
+            List<User> searchResults = repository.searchByNameIgnoreCase("example");
+            model.addAttribute("searchResults", searchResults);
+            return "search";
+        } catch (Exception e) {
+
+            return "error";
+        }
     }
 }
 
